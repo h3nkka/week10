@@ -10,6 +10,21 @@ namespace ex2
     {
         static void Main(string[] args)
         {
-        }
+            try
+            {
+                MailBook mailBook = new MailBook();
+                mailBook.Friends.ForEach(x => Console.WriteLine(x.Name));
+                Console.WriteLine("\nSearch for a name by inputting a string.");
+                mailBook.Search(Console.ReadLine()).ForEach(x => Console.WriteLine(x.Name));
+                Friend friend1 = new Friend("Nikita Mämmelä", "nikitin@russia.ru");
+                mailBook.AddFriend(friend1);
+                mailBook.Friends.ForEach(x => Console.WriteLine(x.Name));
+                Console.ReadKey(true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }      
     }
 }
